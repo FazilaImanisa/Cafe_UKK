@@ -1,5 +1,4 @@
 const req = require("express/lib/request")
-
 let path = require("path")
 let fs = require("fs")
 
@@ -59,14 +58,14 @@ exports.editDataMenu = async (request, response) => {
     if(request.file){
         // jika edit mmenyertakan file gambar
         let menu = await modelMenu.findOne({ where: { id_menu: id} })
-        let oldFileName = menu.image
+        let oldFileName = menu.gambar
 
           // delete file
         let location = path.join(__dirname, "../image", oldFileName)
         fs.unlink(location, error => console.log(error))
 
         // menyisipkan nama file yg baru kedalam objek data menu
-        dataMenu.image = request.file.filename
+        dataMenu.gambar = request.file.filename
     }
 
     modelMenu.update(dataMenu, { where: {id_menu: id} })
@@ -88,7 +87,7 @@ exports.deleteDataMenu = async(request, response) => {
     //ambil data yang akan dihapus
     let menu = await modelMenu.findOne({where: {id_menu: id}})
     if (menu) {
-        let oldFileName = menu.image
+        let oldFileName = menu.gambar
 
         // delete file
         let location = path.join(__dirname, "../image", oldFileName)
@@ -107,3 +106,4 @@ exports.deleteDataMenu = async(request, response) => {
         })
     })
 }
+

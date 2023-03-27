@@ -18,16 +18,30 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:"id_transaksi",
         as:"transaksi"
       })
+
+      this.belongsTo(models.menu,{
+        foreignKey:"id_menu",
+        as:"menu"
+      })
     }
   }
   detail_transaksi.init({
+    id_detail_transaksi:{
+      type:DataTypes.INTEGER,
+      primaryKey:true,
+      autoIncrement:true
+    },
     id_transaksi: DataTypes.INTEGER,
     id_menu: DataTypes.INTEGER,
-    harga: DataTypes.INTEGER
+    qty: DataTypes.INTEGER,
+    total: DataTypes.INTEGER,
+    bayar: DataTypes.INTEGER,
+    kembalian: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'detail_transaksi',
-    tableName: 'detail_transaksi'
+    tableName: 'detail_transaksi',
+    freezeTableName:true
   });
   return detail_transaksi;
 };

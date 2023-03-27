@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     // key: id_transaski
     // parent: transaksi, child: detail_transaksi (FK:id_transaksi)
     // tipe : 1 transaksi mempunyai banyak detail transaksi (one to many)
-    this.belongsTo(models.detail_transaksi,{
+    this.hasMany(models.detail_transaksi,{
       foreignKey:"id_transaksi",
       as:"detail_transaksi"
     })
@@ -50,11 +50,12 @@ module.exports = (sequelize, DataTypes) => {
     nama_pelanggan: DataTypes.STRING,
     status: {
       type: DataTypes.ENUM,
-      values:['in_progress','done']
+      values:['belum_lunas','lunas']
     }
     }, {
     sequelize,
     modelName: 'transaksi',
+    tableName: 'transaksi'
   });
   return transaksi;
 };
