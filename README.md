@@ -9,9 +9,9 @@ The Cafe Transaction System enables cafe owners and staff to efficiently handle 
 ## Tech Stack
 
 - **Frontend:** React.js
-- **Backend:** Node.js with Express
-- **Database:** (Specify the database you are using, e.g., MongoDB, MySQL)
-- **Deployment:** Vercel (for frontend), Heroku (for backend)
+- **Backend:** Node.js 
+- **Database:** MySQL
+- **Deployment:** Vercel
 
 ## Features
 
